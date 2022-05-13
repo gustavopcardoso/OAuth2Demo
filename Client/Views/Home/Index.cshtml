@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "OAuth2 Demo";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div class="request">
+    <a asp-action="AuthorizedRequest">Authorized Request</a>
+    <a asp-action="UnauthorizedRequest">Unauthorized Request</a>        
+    </div>
+</div>
+<br />
+<div class="text-center">
+    @ViewBag.StatusCode
+</div>
+

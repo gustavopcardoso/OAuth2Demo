@@ -1,0 +1,26 @@
+# Compose is a tool for defining and running multi-container Docker applications.
+
+# Mandatory root element. Must be 'services'.
+services:
+    # String representation of the service name. Can be any name.
+    edge-proxy:
+        # The lines below are Service Definitions. A complete list can be checked at https://docs.docker.com/compose/compose-file/
+        image: nginx:latest # Image to be pulled from Dockerhub.
+        volumes:
+            - ./nginx/conf.d/:/etc/nginx/conf.d/ # Nginx will be instructed to pick the config file from my machine.
+        networks:
+            - edge
+        # Defines through which ports host and container will “talk”.
+        ports:
+            - 8080:80 # "Host port":"Container port". Host is the machine running the Nginx container (i.e. my PC).
+
+    authtest:
+        image: gustavopcardoso/first-repo:auth_1.0.0
+        networks:
+            - edge
+
+networks:
+    # Alias of the network. Can be any name.
+    edge:
+        # Default network that allows containers running on the same Docker daemon host to communicate.
+        driver: bridge
