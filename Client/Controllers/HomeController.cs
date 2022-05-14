@@ -54,6 +54,8 @@ public class HomeController : Controller
     private FormUrlEncodedContent GetDataToSend() =>
         new FormUrlEncodedContent(new[]
         {
+            /* I know I should not expose any of these secrets. These ones are just for learning purposes, even knowing it’s a bad 
+               practice to expose them like that. Managing the secrets properly is one of my next to-do items. :) */
             new KeyValuePair<string, string>("grant_type", "client_credentials"),
             new KeyValuePair<string, string>("client_id", "I7RKT8cvMlnRkwbfecWiBQJ54f9ISmXY"),
             new KeyValuePair<string, string>("client_secret", "m7NkrngLy7aPv4BCNDL4RP224QSuT-8A7QXt086F4kDpQG9yHUv1PY5R4ekd-0WR"),
